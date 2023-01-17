@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Application</title>
+    <title>CRUD Application - Create View</title>
     <link rel="stylesheet" href="<?php echo base_url().'asset/css/bootstrap.min.css';?>">
 </head>
 <body>
@@ -15,7 +15,7 @@
     </div>
     <div class="container" style="padding-top: 10px" >
         <h3>Create User</h3>
-        <hr>
+        <hr class="col-md-6">
         <div class="row">
             <form method="post" name="createUser" action="<?php echo base_url().'index.php/user/create';?>">
                 <div class="col-md-6">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group" style="padding-top: 10px">
                         <button class="btn btn-primary">Create</button>
-                        <a href="" class="btn btn-secondary">Cancel</a>
+                        <a href="<?php echo base_url().'index.php/user/index/'; ?>" class="btn btn-secondary">Cancel</a>
                     </div>
                 </div>
             </form> 
