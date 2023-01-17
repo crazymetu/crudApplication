@@ -59,7 +59,7 @@
                 redirect(base_url().'index.php/user/index');
             }
             $this->User_model->deleteUser($userId);
-            $this->session->set_flashdata('success','Record deleted successfully!');
+            $this->session->set_flashdata('danger','Record deleted successfully!');
             redirect(base_url().'index.php/user/index');
         }
 

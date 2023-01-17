@@ -18,10 +18,13 @@
             <div class="col-md-12">
                 <?php
                 $success = $this->session->flashdata('success');
+                $danger = $this->session->flashdata('danger');
                 if($success != ""){
                 ?>
                 <div class="alert alert-success"><?php echo $success;?></div>
-                <?php }?>
+                <?php } else if($danger != "") {?>
+                    <div class="alert alert-danger"><?php echo $danger;?></div>
+                <?php } ?>
             </div>
         </div>
         <h3>Update User</h3>
