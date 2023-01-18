@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <?php
                 $success = $this->session->flashdata('success');
                 $danger = $this->session->flashdata('danger');
@@ -61,7 +61,7 @@
                     </tr>
                     <?php }} else{ ?>
                         <tr>
-                            <td colspan=5>Record not found</td>
+                            <td colspan=5>Record not found !!!</td>
                         </tr>
                     <?php } ?>
                 </table>
