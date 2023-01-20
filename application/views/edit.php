@@ -34,16 +34,16 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="">Name</label>
-                        <input type="text" name="name" value="<?php echo set_value('name',$user['name']);?>" class="form-control" placeholder="Enter your name" >
+                        <input type="text" id="name" name="name" value="<?php echo set_value('name',$user['name']);?>" class="form-control" placeholder="Enter your name" >
                         <?php echo form_error('name');?>
                     </div>
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="email" name="email" value="<?php echo set_value('email',$user['email']);?>" class="form-control" placeholder="Enter your email">
+                        <input type="email" id="email" name="email" value="<?php echo set_value('email',$user['email']);?>" class="form-control" placeholder="Enter your email">
                         <?php echo form_error('email');?>
                     </div>
                     <div class="form-group" style="padding-top: 10px">
-                        <button class="btn btn-primary">Update</button>
+                        <button class="btn btn-primary" type="button" id="createbtn">Update</button>
                         <a href="<?php echo base_url().'index.php/user/index/'; ?>" class="btn btn-secondary">Cancel</a>
                     </div>
                 </div>
@@ -51,4 +51,30 @@
         </div>
     </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        
+        $("#createbtn").click(function() {
+            var base_url = '<?php echo base_url() ?>';
+            var post_url = base_url + 'index.php/user/edit/<?php echo $user['user_id']?>';
+       
+            var data = {
+                'name': $('#name').val(),
+                'email': $('#email').val(),
+            };
+            $.ajax({
+                url: post_url,
+                type: 'POST',
+                data: data,
+                success: function(data){
+                    window.location.href=base_url+"index.php/user/index";
+                },
+                error: function(){
+                    console.log("Not done");
+                }
+            })
+        })
+    </script>
+
 </html>

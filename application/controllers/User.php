@@ -18,17 +18,31 @@
 
             if($this->form_validation->run() == false){
                 $this->load->view('create');
-            } else{
+            } 
+            // else{
+            //     $formArray = array();
+            //     $formArray['name'] = $this->input->post('name');
+            //     $formArray['email'] = $this->input->post('email');
+            //     $formArray['time'] = date('Y-m-d');
+            //     $this->User_model->create($formArray);
+            //     $this->session->set_flashdata('success','Record added successfully!');
+            //     redirect(base_url().'index.php/user/index');
+            // }
+            // <div class="container">Hello World!!!</div>
+        }
+
+        public function insertUser(){
+                $this->load->model('User_model');
                 $formArray = array();
                 $formArray['name'] = $this->input->post('name');
                 $formArray['email'] = $this->input->post('email');
                 $formArray['time'] = date('Y-m-d');
                 $this->User_model->create($formArray);
                 $this->session->set_flashdata('success','Record added successfully!');
-                redirect(base_url().'index.php/user/index');
-            }
-            // <div class="container">Hello World!!!</div>
+                // echo "fine";
+                // redirect(base_url().'index.php/user/index');
         }
+
         function edit($userId){
             $this->load->model('User_model');
             $user = $this->User_model->getUser($userId);
@@ -44,15 +58,17 @@
                 $formArray = array();
                 $formArray['name'] = $this->input->post('name');
                 $formArray['email'] = $this->input->post('email');
-                // $formArray['time'] = date('Y-m-d');
+                $formArray['time'] = date('Y-m-d');
                 $this->User_model->updateUser($userId,$formArray);
                 $this->session->set_flashdata('success','Record updated successfully!');
-                redirect(base_url().'index.php/user/index');
+                // redirect(base_url().'index.php/user/index');
             }
         }
         
-        function delete($userId){
+        function delete(){
             $this->load->model('User_model');
+            // $this->User_model->deleteUser($userId);
+            $userId=$this->input->post('id');
             $user = $this->User_model->getUser($userId);
             if(empty($user)){
                 $this->session->set_flashdata('failure','Record not found in Database!');

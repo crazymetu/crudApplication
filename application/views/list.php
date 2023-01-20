@@ -56,7 +56,7 @@
                             <a href="<?php echo base_url().'index.php/user/edit/'.$user['user_id'] ?>" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
-                            <a href="<?php echo base_url().'index.php/user/delete/'.$user['user_id'] ?>" class="btn btn-danger">Delete</a>
+                            <a class="btn btn-danger" onclick="deleteUser(<?php echo $user['user_id'] ?>)">Delete</a>
                         </td>
                     </tr>
                     <?php }} else{ ?>
@@ -69,4 +69,44 @@
         </div>
     </div>
 </body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        
+        function deleteUser(id){
+            Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                var base_url = '<?php echo base_url() ?>';
+                var post_url = base_url+'index.php/user/delete';
+                var data = {
+                id: id,
+            };
+            $.ajax({
+                url: post_url,
+                type: 'POST',
+                data: data,
+                success: function(){
+                    window.location.reload();
+                },
+                error: function(){
+                    console.log("Not done");
+                }
+            })
+                
+            }
+            })
+
+            
+        }
+    </script>
 </html>
